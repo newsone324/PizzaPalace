@@ -1,71 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pizza Palace</title>
-    <link href="styles.css" rel="stylesheet"/>
+    <link href="styles.css" rel="stylesheet" />
 </head>
+
 <body>
-    <h1 class="title-info">Pizza Palace</h1> <div><button class="view-cart" onclick="openCart()">Cart</button></div>
-    <p class="title-info">Welcome to our Pizza Restaurant!</p>
+    <h1 class="title-info">🍕 Pizza Palace</h1>
+    <div><button class="view-cart" onclick="openCart()">🛒 Cart</button></div>
+    <p class="subtitle">Authentic Italian Pizzas Made with Love</p>
     <hr>
     <div class="menu">
         <h2>Menu</h2>
         <ul>
-            <li class="menu-item">Margherita Pizza - $10<button class="add-cart" data-name="Margherita Pizza" data-price="10">Add To Cart</button></li>
-            <li class="menu-item">Pepperoni Pizza - $12<button class="add-cart" data-name="Pepperoni Pizza" data-price="12">Add To Cart</button></li>
-            <li class="menu-item">Veggie Pizza - $11<button class="add-cart" data-name="Veggie Pizza" data-price="11">Add To Cart</button></li>
-            <li class="menu-item">BBQ Pizza - $13<button class="add-cart" data-name="BBQ Pizza" data-price="13">Add To Cart</button></li>
-            <li class="menu-item">Create Your Own - $10 (Starting Price) <button class="customize" onclick="openCustom()" data-name="Create Your Own - 10$ (Starting)" data-price="13">Customize</button></p>
+            <li class="menu-item"><span>Margherita Pizza - $10</span><button class="add-cart"
+                    data-name="Margherita Pizza" data-price="10">Add To Cart</button></li>
+            <li class="menu-item"><span>Pepperoni Pizza - $12</span><button class="add-cart" data-name="Pepperoni Pizza"
+                    data-price="12">Add To Cart</button></li>
+            <li class="menu-item"><span>Veggie Pizza - $11</span><button class="add-cart" data-name="Veggie Pizza"
+                    data-price="11">Add To Cart</button></li>
+            <li class="menu-item"><span>BBQ Pizza - $13</span><button class="add-cart" data-name="BBQ Pizza"
+                    data-price="13">Add To Cart</button></li>
+            <li class="menu-item"><span>Create Your Own - $10 (Starting Price)</span> <button class="customize"
+                    onclick="openCustom()" data-name="Create Your Own - 10$ (Starting)"
+                    data-price="10">Customize</button></li>
         </ul>
     </div>
-    
+
     <!-- Cart Modal -->
     <div id="cart-modal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeCart()">&times;</span>
-            <h1 class="title-info">Your Shopping Cart</h1>
+            <h1 class="title-info">🛒 Your Shopping Cart</h1>
             <div id="cart-items">
                 <!-- Cart items will be displayed here -->
             </div>
-            <h3>Total: $<span id="cart-total">0</span></h3>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin: 20px 0;">
+                <button onclick="clearCart()" class="clear-cart-btn">🗑️ Clear Cart</button>
+                <h3>Total: $<span id="cart-total">0</span></h3>
+            </div>
         </div>
     </div>
 
     <!-- Customize da pizza-->
-     <div id="pizza-modal" class="modal">
+    <div id="pizza-modal" class="modal">
         <div class="pizza-modal-content">
             <span class="close" onclick="closeCustom()">&times;</span>
-            <h1 class="title-info">Customize Your Pizza</h1>
-            <h2>Choose a Sauce</h2>
+            <h1 class="title-info">🍕 Customize Your Pizza</h1>
+
+            <h2>🍅 Choose a Sauce</h2>
             <ul>
-                <li class="topping"><input type="radio" id="tomato-sauce" data-name="Tomato Sauce" data-price="0">
-                <label for="tomato-sauce">Tomato Sauce</label></li>
-                <li class="topping"><input type="radio" id="alfredo-sauce" data-name="Alfredo Sauce" data-price="1">
-                <label for="alfredo-sauce">Alfredo Sauce</label></li>
+                <li class="topping">
+                    <input class="pizza-input" type="radio" name="sauce" id="tomato-sauce" data-name="Tomato Sauce"
+                        data-price="0">
+                    <label for="tomato-sauce">🍅 Tomato Sauce</label>
+                </li>
+                <li class="topping">
+                    <input class="pizza-input" type="radio" name="sauce" id="alfredo-sauce" data-name="Alfredo Sauce"
+                        data-price="1">
+                    <label for="alfredo-sauce">🧀 Alfredo Sauce (+$1)</label>
+                </li>
+                <li class="topping">
+                    <input class="pizza-input" type="radio" name="sauce" id="pesto-sauce" data-name="Pesto Sauce"
+                        data-price="1.50">
+                    <label for="pesto-sauce">🌿 Pesto Sauce (+$1.50)</label>
+                </li>
+                <li class="topping">
+                    <input class="pizza-input" type="radio" name="sauce" id="bbq-sauce" data-name="BBQ Sauce"
+                        data-price="1">
+                    <label for="bbq-sauce">🍯 BBQ Sauce (+$1)</label>
+                </li>
+                <li class="topping">
+                    <input class="pizza-input" type="radio" name="sauce" id="garlic-oil" data-name="Garlic Olive Oil"
+                        data-price="0.50">
+                    <label for="garlic-oil">🧄 Garlic Olive Oil (+$0.50)</label>
+                </li>
             </ul>
 
-            <h2>Choose Your Toppings</h2>
+            <h2>🥬 Choose Your Toppings</h2>
             <ul>
-                <li class="topping"><input type="checkbox" id="pepperoni" data-name="Pepperoni" data-price="1.50">
-                <label for="pepperoni">Pepperoni</label></li>
-                <li class="topping"><input type="checkbox" id="sausage" data-name="Sausage" data-price="1.50">
-                <label for="sausage">Sausage</label></li>
-                <li class="topping"><input type="checkbox" id="mushrooms" data-name="Mushrooms" data-price="1">
-                <label for="mushrooms">Mushrooms</label></li>
-                <li class="topping"><input type="checkbox" id="olives" data-name="Olives" data-price="1">
-                <label for="olives">Olives</label></li>
+                <li class="topping">
+                    <input class="pizza-input" type="checkbox" id="pepperoni" data-name="Pepperoni" data-price="1.50">
+                    <label for="pepperoni">🍖 Pepperoni (+$1.50)</label>
+                </li>
+                <li class="topping">
+                    <input class="pizza-input" type="checkbox" id="sausage" data-name="Sausage" data-price="1.50">
+                    <label for="sausage">🌭 Sausage (+$1.50)</label>
+                </li>
+                <li class="topping">
+                    <input class="pizza-input" type="checkbox" id="mushrooms" data-name="Mushrooms" data-price="1">
+                    <label for="mushrooms">🍄 Mushrooms (+$1)</label>
+                </li>
+                <li class="topping">
+                    <input class="pizza-input" type="checkbox" id="olives" data-name="Olives" data-price="1">
+                    <label for="olives">🫒 Olives (+$1)</label>
+                </li>
+                <li class="topping">
+                    <input class="pizza-input" type="checkbox" id="onions" data-name="Onions" data-price="0.50">
+                    <label for="onions">🧅 Onions (+$0.50)</label>
+                </li>
+                <li class="topping">
+                    <input class="pizza-input" type="checkbox" id="bell-peppers" data-name="Bell Peppers"
+                        data-price="1">
+                    <label for="bell-peppers">🫑 Bell Peppers (+$1)</label>
+                </li>
+                <li class="topping">
+                    <input class="pizza-input" type="checkbox" id="jalapenos" data-name="Jalapeños" data-price="1.50">
+                    <label for="jalapenos">🌶️ Jalapeños (+$1.50)</label>
+                </li>
+                <li class="topping">
+                    <input class="pizza-input" type="checkbox" id="pineapple" data-name="Pineapple" data-price="1.50">
+                    <label for="pineapple">🍍 Pineapple (+$1.50)</label>
+                </li>
+                <li class="topping">
+                    <input class="pizza-input" type="checkbox" id="extra-cheese" data-name="Extra Cheese"
+                        data-price="2">
+                    <label for="extra-cheese">🧀 Extra Cheese (+$2)</label>
+                </li>
+                <li class="topping">
+                    <input class="pizza-input" type="checkbox" id="bacon" data-name="Bacon" data-price="2">
+                    <label for="bacon">🥓 Bacon (+$2)</label>
+                </li>
+                <li class="topping">
+                    <input class="pizza-input" type="checkbox" id="chicken" data-name="Chicken" data-price="2.50">
+                    <label for="chicken">🍗 Chicken (+$2.50)</label>
+                </li>
+                <li class="topping">
+                    <input class="pizza-input" type="checkbox" id="spinach" data-name="Spinach" data-price="1">
+                    <label for="spinach">🥬 Spinach (+$1)</label>
+                </li>
+                <li class="topping">
+                    <input class="pizza-input" type="checkbox" id="tomatoes" data-name="Tomatoes" data-price="1">
+                    <label for="tomatoes">🍅 Tomatoes (+$1)</label>
+                </li>
+                <li class="topping">
+                    <input class="pizza-input" type="checkbox" id="basil" data-name="Basil" data-price="0.50">
+                    <label for="basil">🌿 Fresh Basil (+$0.50)</label>
+                </li>
             </ul>
 
             <div id="pizza-toppings">
-                <!--toppings will be here-->
+                <!-- toppings will appear here -->
             </div>
-            <h3>Total Pizza Cost: $<span id="custom-total">0</span><button class="custom-add-cart" data-name="custom-price">Add To Cart</button></h3>
-            
+
+            <h3>Total Pizza Cost: $<span id="custom-total">0.00</span>
+                <button class="custom-add-cart" data-name="custom-pizza">Add To Cart</button>
+            </h3>
         </div>
-        
-     </div>
+    </div>
     <script src="script.js"></script>
 </body>
+
 </html>
